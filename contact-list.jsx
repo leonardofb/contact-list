@@ -83,7 +83,8 @@ de la lista de elementos hijos del elemento contactList.
                 target.classList.add("selected");
             }
         }
-/*Esta funcion me debe actualizar el nuevo valor en la lista*/
+/*Esta funcion me debe actualizar el nuevo valor en la lista usando los mismos
+input de la lista git */
 function updateContact() {
     let selected = contactList.querySelector(".selected");
     if (selected) {
