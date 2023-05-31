@@ -3,19 +3,20 @@
 <head>
     <link rel="stylesheet" type="text/css" href="estilos.css">
     <title>MY LISTA DE CONTACTOS</title>
+    <div id="lista-contactos"></div>
 </head>
 
 <body>
     <h1>Ejemplo de lista de contactos</h1>
     <ul id="contactList"></ul>
-    <input type="text" id="idInput" placeholder="cedula">
+    <input type="text" id="idInput" placeholder="id o cedula">
 	<input type="text" id="nameInput" placeholder="Nombre">
 	<input type="text" id="surnamesInput" placeholder="Apellidos">
 	<input type="text" id="phoneInput" placeholder="Teléfono">
     <input type="text" id="cityInput" placeholder="ciudad">
 	<input type="text" id="addressInput" placeholder="Direccion">
-    <button class="icon-button" onclick="addContact()"><img src="./imagenes/" alt="x">Agregar contacto</button>
-    <button class="icon-button" onclick="removeContact()">Eliminar contacto</button>
+    <button class="icon-button" onclick="addContact()"><img src="./imagenes/agregar.png" alt="x">Agregar contacto</button>
+    <button class="icon-button" onclick="removeContact()"><img src="./imagenes/eliminar.gif" alt="x">Eliminar contacto</button>
     <a>Los Datos con (*) son hoblogatorios</a>
 	<script>
         
@@ -57,8 +58,15 @@
                 addressInput.value = "";
             }
         }
+/*
+Se declara una variable llamada index y se le 
+asigna el índice del elemento seleccionado dentro 
+de la lista de elementos hijos del elemento contactList.
+ La función Array.from se utiliza para convertir los
+   elementos en un array y luego se utiliza el método indexOf 
+  para sacar el índice del elemento seleccionado en ese array.*/
 
-        function removeContact() {
+       function removeContact() {
             let selected = contactList.querySelector(".selected");
             if (selected) {
                 let index = Array.from(contactList.children).indexOf(selected);
@@ -71,7 +79,7 @@
             contactList.innerHTML = "";
             for (let contact of contacts) {
                 let li = document.createElement("li");
-                li.textContent = contact.name + " - " + contact.phone + " - " + contact.address;
+                li.textContent = contact.id +" - " + contact.name + " - " + contact.surnames + " - "  + contact.phone + " - " + contact.city + " - " + contact.address;
                 contactList.appendChild(li);
             }
         }
