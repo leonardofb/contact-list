@@ -83,3 +83,22 @@ de la lista de elementos hijos del elemento contactList.
                 target.classList.add("selected");
             }
         }
+/*Esta funcion me debe actualizar el nuevo valor en la lista*/
+function updateContact() {
+    let selected = contactList.querySelector(".selected");
+    if (selected) {
+        let index = Array.from(contactList.children).indexOf(selected);
+        let contact = contacts[index];
+        contact.name = nameInput.value;
+        contact.surnames = surnamesInput.value;
+        contact.phone = phoneInput.value;
+        contact.city = cityInput.value;
+        contact.address = addressInput.value;
+        displayContacts();
+        nameInput.value = "";
+        surnamesInput.value = "";
+        phoneInput.value = "";
+        cityInput.value = "";
+        addressInput.value = "";
+    }
+}
