@@ -10,17 +10,19 @@
 <body>
     <h1>Ejemplo de lista de contactos</h1>
     <ul id="contactList"></ul>
+    
     <input type="text" id="idInput" placeholder="id o cedula">
 	<input type="text" id="nameInput" placeholder="Nombre">
 	<input type="text" id="surnamesInput" placeholder="Apellidos">
 	<input type="text" id="phoneInput" placeholder="Teléfono">
     <input type="text" id="cityInput" placeholder="ciudad">
 	<input type="text" id="addressInput" placeholder="Direccion">         
+    <div class=container>
     <button class="icon-button" onclick="addContact()"><img src="./imagenes/agregar.png" alt="x">Agregar contacto</button>
     <button class="icon-button" onclick="removeContact()"><img src="./imagenes/eliminar.gif" alt="x">Eliminar contacto</button>
     
     <button class="icon-button" onclick="updateContact()"><img src="./imagenes/actualizar.gif" alt="x">Actualizar contacto</button>
-    
+    </div>
     
     <a>Los Datos con (*) son hobligatorios</a>
 	
