@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <title>MY LISTA DE CONTACTOS</title>
+</head>
+
+<body>
+    <h1>Ejemplo de lista de contactos</h1>
+    <ul id="contactList"></ul>
+    <input type="text" id="idInput" placeholder="cedula">
+	<input type="text" id="nameInput" placeholder="Nombre">
+	<input type="text" id="surnamesInput" placeholder="Apellidos">
+	<input type="text" id="phoneInput" placeholder="Teléfono">
+    <input type="text" id="cityInput" placeholder="ciudad">
+	<input type="text" id="addressInput" placeholder="Direccion">
+    <button class="icon-button" onclick="addContact()"><img src="./imagenes/" alt="x">Agregar contacto</button>
+    <button class="icon-button" onclick="removeContact()">Eliminar contacto</button>
+    <a>Los Datos con (*) son hoblogatorios</a>
+	<script>
+        
+		let contactList = document.getElementById("contactList");
+		let idInput = document.getElementById("idInput");
+        let nameInput = document.getElementById("nameInput");
+		let surnamesInput = document.getElementById("surnamesInput");
+        let phoneInput = document.getElementById("phoneInput");
+		let cityInput = document.getElementById("cityInput");
+        let addressInput = document.getElementById("addressInput");
+        let contacts = [];
+
+        function addContact() {
+            let id = idInput.value;
+			let name = nameInput.value;
+			let surnames = surnamesInput.value;
+            let phone = phoneInput.value;
+			let city = cityInput.value;
+            let address = addressInput.value;
+
+            if (name && phone && address) {
+                let contact = {
+                    id:id,
+					name: name,
+					surnames:surnames,
+                    phone: phone,
+					city:city,
+                    address: address
+
+
+                };
+                contacts.push(contact);
+                displayContacts();
+                idInput.value = "";
+				nameInput.value = "";
+				surnames.value == ""
+                phoneInput.value = "";
+				cityInput.value = "";
+                addressInput.value = "";
+            }
+        }
+
+        function removeContact() {
+            let selected = contactList.querySelector(".selected");
+            if (selected) {
+                let index = Array.from(contactList.children).indexOf(selected);
+                contacts.splice(index, 1);
+                displayContacts();
+            }
+        }
+
+        function displayContacts() {
+            contactList.innerHTML = "";
+            for (let contact of contacts) {
+                let li = document.createElement("li");
+                li.textContent = contact.name + " - " + contact.phone + " - " + contact.address;
+                contactList.appendChild(li);
+            }
+        }
+
+        contactList.onclick = function(event) {
+            let target = event.target;
+            if (target.tagName === "LI") {
+                let selected = contactList.querySelector(".selected");
+                if (selected) {
+                    selected.classList.remove("selected");
+                }
+                target.classList.add("selected");
+            }
+        }
+    </script>
+</body>
+</html>
